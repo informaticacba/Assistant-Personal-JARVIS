@@ -4,17 +4,21 @@ import speech_recognition as sr
 import webbrowser
 import datetime
 import os
+import getpass
+import cv2
 import sys
 import smtplib
+import whisper
+
+import openai
+import yolov5
+
 from news import speak_news, getNewsUrl
 from OCR import OCR
 from diction import translate
 from helpers import *
 from youtube import youtube
 from sys import platform
-import os
-import getpass
-import cv2
 
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
@@ -42,15 +46,14 @@ class Jarvis:
     def wishMe(self) -> None:
         hour = int(datetime.datetime.now().hour)
         if hour >= 0 and hour < 12:
-            speak("Good Morning SIR")
+            speak("Good Morning")
         elif hour >= 12 and hour < 18:
-            speak("Good Afternoon SIR")
-
+            speak("Good Afternoon")
         else:
-            speak('Good Evening SIR')
+            speak("Good Evening")
 
         weather()
-        speak('I am JARVIS. Please tell me how can I help you SIR?')
+        speak('I am JARVIS. Please tell me how can I help you?')
 
     def sendEmail(self, to, content) -> None:
         server = smtplib.SMTP('smtp.gmail.com', 587)
@@ -91,7 +94,9 @@ class Jarvis:
         elif 'open stackoverflow' in query:
             webbrowser.get('chrome').open_new_tab('https://www.stackoverflow.com')
         elif 'open youtube' in query:
-            webbrowser.get('chrome').open_new_tab('https://youtube.com')    
+            webbrowser.get('chrome').open_new_tab('https://www.youtube.com')
+        elif 'search youtube' in query:
+            webbrowser.get('chrome').open_new_tab('https://www.youtube.com?q=')
         elif 'open amazon' in query:
             webbrowser.get('chrome').open_new_tab('https://amazon.com')
 
@@ -106,6 +111,7 @@ class Jarvis:
             screenshot()
 
         elif 'play music' in query:
+            musica=input("Ingrese la musica: ")
             os.startfile(musica)
 
         elif 'search youtube' in query:
