@@ -9,7 +9,7 @@ import cv2
 import sys
 import smtplib
 import whisper
-
+import mediapipe
 import openai
 import yolov5
 
