@@ -72,26 +72,26 @@ class Jarvis:
         elif 'youtube downloader' in query:
             exec(open('youtube_downloader.py').read())
             
-        
-            
         elif 'voice' in query:
             if 'female' in query:
                 engine.setProperty('voice', voices[1].id)
             else:
                 engine.setProperty('voice', voices[0].id)
-            speak("Hello Sir, I have switched my voice. How is it?")
+            speak("Hello, I have switched my voice. How is it?")
 
         if 'jarvis are you there' in query:
-            speak("Yes Sir, at your service")
+            speak("Yes, at your service")
         if 'jarvis who made you' in query:
-            speak("Yes Sir, my master build me in AI")
+            speak("Yes, my master build me in AI")
             
-         
-
+        elif 'open google' in query:
+            webbrowser.get('chrome').open_new_tab('https://www.google.com')
+        elif 'search in google' in query:
+            webbrowser.get('chrome').open_new_tab('https://www.google.com?q=')
+        elif 'open stackoverflow' in query:
+            webbrowser.get('chrome').open_new_tab('https://www.stackoverflow.com')
         elif 'open youtube' in query:
-
-            webbrowser.get('chrome').open_new_tab('https://youtube.com')
-            
+            webbrowser.get('chrome').open_new_tab('https://youtube.com')    
         elif 'open amazon' in query:
             webbrowser.get('chrome').open_new_tab('https://amazon.com')
 
@@ -105,17 +105,12 @@ class Jarvis:
             speak("taking screenshot")
             screenshot()
 
-        elif 'open google' in query:
-            webbrowser.get('chrome').open_new_tab('https://google.com')
-
-        elif 'open stackoverflow' in query:
-            webbrowser.get('chrome').open_new_tab('https://stackoverflow.com')
-
         elif 'play music' in query:
-            os.startfile("D:\\RoiNa.mp3")
+            os.startfile(musica)
 
         elif 'search youtube' in query:
             speak('What you want to search on Youtube?')
+            webbrowser.get('chrome').open_new_tab('https://youtube.com?q=')
             youtube(takeCommand())
         elif 'the time' in query:
             strTime = datetime.datetime.now().strftime("%H:%M:%S")
@@ -199,7 +194,7 @@ class Jarvis:
             translate(takeCommand())
 
         elif 'news' in query:
-            speak('Ofcourse sir..')
+            speak('Ofcourse ..')
             speak_news()
             speak('Do you want to read the full news...')
             test = takeCommand()
@@ -208,14 +203,14 @@ class Jarvis:
                 webbrowser.open(getNewsUrl())
                 speak('You can now read the full news from this website.')
             else:
-                speak('No Problem Sir')
+                speak('No Problem')
 
         elif 'voice' in query:
             if 'female' in query:
                 engine.setProperty('voice', voices[0].id)
             else:
                 engine.setProperty('voice', voices[1].id)
-            speak("Hello Sir, I have switched my voice. How is it?")
+            speak("Hello, I have switched my voice. How is it?")
 
         elif 'email to gaurav' in query:
             try:
